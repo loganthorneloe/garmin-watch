@@ -1,0 +1,7 @@
+<strings>
+  <string id="AppName">Sector</string>
+  <string id="TemperatureTitle">Temperature units</string>
+  <string id="WatchUnits">Use watch setting</string>
+  <string id="Fahrenheit">Fahrenheit</string>
+  <string id="Celsius">Celsius</string>
+</strings>

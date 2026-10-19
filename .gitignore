@@ -1,0 +1,16 @@
+build/
+bin/
+gen/
+.private/
+.env
+.env.*
+*.der
+*.pem
+*.key
+*.p12
+*.pfx
+*.prg
+!install/Sector.prg
+*.debug.xml
+*.mir
+.DS_Store
