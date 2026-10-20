@@ -6,13 +6,15 @@ An open-source analog Garmin watch face: a black AMOLED dial, white hands and ma
 
 The preview uses simulator data, not personal health readings.
 
-**[Download Sector.prg](https://github.com/loganthorneloe/sector-watchface/releases/latest/download/Sector.prg)** · **[Cable-install guide](docs/INSTALL.md)** · **[Build and fork](docs/DEVELOPMENT.md)**
+**[Download Sector.prg](https://github.com/loganthorneloe/sector-watchface/raw/refs/tags/v1.1.6/install/Sector.prg)** · **[Cable-install guide](docs/INSTALL.md)** · **[Build and fork](docs/DEVELOPMENT.md)**
 
 ## Compatibility
 
-The included v1.1.5 binary targets **fēnix 9 Pro inReach, 51 mm AMOLED**, device ID `fenix9pro51mm`, 466 × 466 pixels. It has been tested in the matching Garmin simulator and transferred to that physical watch. Other sizes and models are **not supported by this binary**, even if their screens look similar. Forks can add and test their own targets.
+The included v1.1.6 binary targets **fēnix 9 Pro inReach, 51 mm AMOLED**, device ID `fenix9pro51mm`, 466 × 466 pixels. It has been tested in the matching Garmin simulator and transferred to that physical watch. Other sizes and models are **not supported by this binary**, even if their screens look similar. Forks can add and test their own targets.
 
 The manifest requires Connect IQ API 5.1.0 or later. Sleep Score requires the native complication introduced in API 6.0.2 and firmware that provides it. Unavailable values show `--`; the face never substitutes a made-up score.
+
+Version 1.1.6 adds larger text and broader, outlined hour/minute hands with short pointed tips. The thin red second hand is unchanged.
 
 ## On the dial
 
@@ -32,7 +34,7 @@ The red second hand appears while the display is awake. Low-power/off mode is co
 ## Install in a minute
 
 1. Confirm your exact watch model matches the compatibility section.
-2. Download **Sector.prg** from [Releases](https://github.com/loganthorneloe/sector-watchface/releases/latest). It is also included in [`install/`](install/).
+2. Download **Sector.prg** using the link above, or get it from [`install/`](install/). The matching checksum is in [`install/SHA256SUMS`](install/SHA256SUMS).
 3. Connect with a USB **data** cable and select **MTP / File Transfer** on the watch if prompted.
 4. Copy `Sector.prg` into the watch’s existing **`GARMIN/APPS`** folder.
 5. Wait for the transfer to finish, eject if available, disconnect, and select **Sector** in the watch-face picker.
@@ -55,7 +57,7 @@ Fork the repo, follow [DEVELOPMENT.md](docs/DEVELOPMENT.md), and build with your
 
 ## Validation
 
-Version 1.1.5 compiles with Connect IQ SDK 9.2.0. All six simulator tests pass, covering step progress, temperature conversion and range, formatting, Body Battery fallback validity, and color interpolation. The release has been visually checked in the 466 × 466 target simulator and USB transfer was verified by reading the file back. Wider model support and long-term battery consumption have not been established.
+Version 1.1.6 compiles with Connect IQ SDK 9.2.0. All six simulator tests pass, covering step progress, temperature conversion and range, formatting, Body Battery fallback validity, and color interpolation. The release has been visually checked in the 466 × 466 target simulator and USB transfer was verified by reading the file back. Wider model support and long-term battery consumption have not been established.
 
 ## License
 

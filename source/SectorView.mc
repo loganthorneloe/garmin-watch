@@ -35,11 +35,11 @@ class SectorView extends WatchUi.WatchFace {
         _scale = (dc.getWidth() < dc.getHeight() ? dc.getWidth() : dc.getHeight()) / 454.0;
         _cx = dc.getWidth() / 2.0;
         _cy = dc.getHeight() / 2.0;
-        _valueFont = font(34, Graphics.FONT_MEDIUM);
-        _dateFont = font(29, Graphics.FONT_SMALL);
-        _smallFont = font(19, Graphics.FONT_XTINY);
-        _hourFont = font(28, Graphics.FONT_SMALL);
-        _stepsFont = font(30, Graphics.FONT_SMALL);
+        _valueFont = font(38, Graphics.FONT_MEDIUM);
+        _dateFont = font(32, Graphics.FONT_SMALL);
+        _smallFont = font(22, Graphics.FONT_XTINY);
+        _hourFont = font(31, Graphics.FONT_SMALL);
+        _stepsFont = font(34, Graphics.FONT_SMALL);
         _dirty = true;
     }
 
@@ -258,15 +258,19 @@ class SectorView extends WatchUi.WatchFace {
     }
 
     function drawHand(dc, angle, length, halfWidth) {
-        // Crisp white hands with a black center facet and black separation edge.
-        handPolygon(dc, [[-halfWidth-1,10],[-halfWidth-2,-25],[0,-length-2],[halfWidth+2,-25],[halfWidth+1,10]], angle, Graphics.COLOR_BLACK);
-        handPolygon(dc, [[-halfWidth,8],[-halfWidth,-25],[0,-length],[halfWidth,-25],[halfWidth,8]], angle, WHITE);
-        handPolygon(dc, [[-0.8,-25],[0,-length+16],[0.8,-25]], angle, Graphics.COLOR_BLACK);
+        // Sporting skeleton hands: compact solid root, broad outlined body,
+        // and a short pointed tip.
+        var root = halfWidth * 0.55;
+        var shoulder = length * 0.32;
+        var inset = halfWidth - 3.5;
+        handPolygon(dc, [[-root-2,5],[-halfWidth-2,-shoulder],[-halfWidth-2,-length+11],[0,-length-3],[halfWidth+2,-length+11],[halfWidth+2,-shoulder],[root+2,5]], angle, Graphics.COLOR_BLACK);
+        handPolygon(dc, [[-root,3],[-halfWidth,-shoulder],[-halfWidth,-length+12],[0,-length],[halfWidth,-length+12],[halfWidth,-shoulder],[root,3]], angle, WHITE);
+        handPolygon(dc, [[-inset,-shoulder-4],[-inset,-length+13],[0,-length+5],[inset,-length+13],[inset,-shoulder-4]], angle, Graphics.COLOR_BLACK);
     }
 
     function drawHands(dc, hour, minute, second) {
-        drawHand(dc, (hour % 12) * 30 + minute * 0.5, 112, 4);
-        drawHand(dc, minute * 6 + second * 0.1, 179, 2.8);
+        drawHand(dc, (hour % 12) * 30 + minute * 0.5, 118, 11);
+        drawHand(dc, minute * 6 + second * 0.1, 181, 8.5);
         // A straight red seconds needle, without an arrowhead or diamond tail.
         var angle = second * 6;
         var tip = point(227, 227, 210, angle);

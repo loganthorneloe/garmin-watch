@@ -4,7 +4,7 @@
 
 The supplied `Sector.prg` is for **fēnix 9 Pro inReach, 51 mm AMOLED** (`fenix9pro51mm`) only. Other Garmin models need their own compiled and tested build. A USB charging cable must also support data transfer.
 
-Download [`Sector.prg` from the latest release](https://github.com/loganthorneloe/sector-watchface/releases/latest/download/Sector.prg). Download the actual file, not a saved GitHub HTML page. If using the repository ZIP, the ready-to-install file is `install/Sector.prg`; do not copy the entire ZIP to the watch.
+Download [`Sector.prg` for v1.1.6](https://github.com/loganthorneloe/sector-watchface/raw/refs/tags/v1.1.6/install/Sector.prg). Download the actual file, not a saved GitHub HTML page. If using the repository ZIP, the ready-to-install file is `install/Sector.prg`; do not copy the entire ZIP to the watch.
 
 ## 1. Connect and enable file transfer
 
@@ -55,7 +55,7 @@ To remove Sector, select another watch face and use the watch’s installed watc
 
 ## Optional download verification
 
-Download `SHA256SUMS` from the same release and compare the checksum of `Sector.prg`:
+Download [`SHA256SUMS` for the same version](https://github.com/loganthorneloe/sector-watchface/raw/refs/tags/v1.1.6/install/SHA256SUMS) and compare the checksum of `Sector.prg`:
 
 ```sh
 # macOS
