@@ -9,8 +9,8 @@ The helper script uses Bash, Java, and OpenSSL (macOS/Linux, or a compatible she
 ## Clone and build
 
 ```sh
-git clone https://github.com/loganthorneloe/sector-watchface.git
-cd sector-watchface
+git clone https://github.com/loganthorneloe/garmin-watch.git
+cd garmin-watch/faces/sector
 export CIQ_SDK="/path/to/your/connect-iq-sdk"
 # Optional if java is not on PATH:
 export CIQ_JAVA="/path/to/java"

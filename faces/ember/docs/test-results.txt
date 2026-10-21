@@ -1,0 +1,59 @@
+------------------------------------------------------------------------------
+Executing test testBodyBatteryMissingNewestSample...
+PASS
+------------------------------------------------------------------------------
+Executing test testBodyBatteryHistoryValidity...
+PASS
+------------------------------------------------------------------------------
+Executing test testWeatherUsesGarminAfterOvernight...
+PASS
+------------------------------------------------------------------------------
+Executing test testWeatherDoesNotReuseUnavailableReadings...
+PASS
+------------------------------------------------------------------------------
+Executing test testWeatherMissingAndPartialValues...
+PASS
+------------------------------------------------------------------------------
+Executing test testWeatherUsesLatestSuppliedValues...
+PASS
+------------------------------------------------------------------------------
+Executing test testFloorsDailyGoalAndReset...
+PASS
+------------------------------------------------------------------------------
+Executing test testBodyBatteryArcGeometry...
+PASS
+------------------------------------------------------------------------------
+Executing test testDailyArcsOppositeStartsAndFill...
+PASS
+------------------------------------------------------------------------------
+Executing test testStepGoalBoundaries...
+PASS
+------------------------------------------------------------------------------
+Executing test testTemperatureUnitsAndRange...
+PASS
+------------------------------------------------------------------------------
+Executing test testReadoutFormatting...
+PASS
+------------------------------------------------------------------------------
+Executing test testColorScaleBoundaries...
+PASS
+
+==============================================================================
+RESULTS
+Test:                                      Status:
+testBodyBatteryMissingNewestSample         PASS
+testBodyBatteryHistoryValidity             PASS
+testWeatherUsesGarminAfterOvernight        PASS
+testWeatherDoesNotReuseUnavailableReadings PASS
+testWeatherMissingAndPartialValues         PASS
+testWeatherUsesLatestSuppliedValues        PASS
+testFloorsDailyGoalAndReset                PASS
+testBodyBatteryArcGeometry                 PASS
+testDailyArcsOppositeStartsAndFill         PASS
+testStepGoalBoundaries                     PASS
+testTemperatureUnitsAndRange               PASS
+testReadoutFormatting                      PASS
+testColorScaleBoundaries                   PASS
+Ran 13 tests
+
+PASSED (passed=13, failed=0, errors=0)

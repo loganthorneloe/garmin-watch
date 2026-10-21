@@ -10,7 +10,8 @@ gen/
 *.p12
 *.pfx
 *.prg
-!install/Sector.prg
+!faces/sector/install/Sector.prg
+!faces/ember/install/Ember.prg
 *.debug.xml
 *.mir
 .DS_Store
