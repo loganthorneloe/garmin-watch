@@ -51,22 +51,29 @@ class SectorData {
             }
         }
 
+        var weather = null;
+        if (Weather has :getCurrentConditions) {
+            weather = Weather.getCurrentConditions();
+        }
+        updateWeather(weather, now);
+        return true;
+    }
+
+    function updateWeather(weather, now) {
         temperature = null;
         lowTemperature = null;
         highTemperature = null;
         uv = null;
-        if (Weather has :getCurrentConditions) {
-            var weather = Weather.getCurrentConditions();
-            if (weather != null && (weather.observationTime == null || now - weather.observationTime.value() <= 7200)) {
-                temperature = weather.temperature;
-                lowTemperature = weather.lowTemperature;
-                highTemperature = weather.highTemperature;
-                if (weather has :uvIndex) {
-                    if (weather.uvIndex != null && weather.uvIndex >= 0) { uv = weather.uvIndex; }
-                }
-            }
+        // Show Garmin's latest supplied conditions directly. Garmin owns their
+        // freshness; do not discard them using a separate face-level age limit
+        // or retain a previous response when the provider reports no weather.
+        if (weather == null) { return; }
+        temperature = weather.temperature;
+        lowTemperature = weather.lowTemperature;
+        highTemperature = weather.highTemperature;
+        if ((weather has :uvIndex) && weather.uvIndex != null && weather.uvIndex >= 0) {
+            uv = weather.uvIndex;
         }
-        return true;
     }
     function validScore(value) {
         return (value instanceof Lang.Number || value instanceof Lang.Float) && value >= 0 && value <= 100;

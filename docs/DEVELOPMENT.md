@@ -56,7 +56,7 @@ Only `fenix9pro51mm` is declared and tested. To port Sector, install your target
 "$CIQ_SDK/bin/monkeydo" build/Sector-fenix9pro51mm-release.prg fenix9pro51mm
 ```
 
-Launcher syntax and extensions can differ on Windows. Never install the test build as the daily face. Check high-power, low-power/off, and missing-data states, and inspect long/short text values. The six tests cover progress/units/formatting, score-history validity, and color boundaries. Release screenshots should use simulator data.
+Launcher syntax and extensions can differ on Windows. Never install the test build as the daily face. Check high-power, low-power/off, and missing-data states, and inspect long/short text values. The ten tests cover progress/units/formatting, score-history validity, color boundaries, Garmin weather after overnight sleep, unavailable provider data, partial values, and updated provider responses. Release screenshots should use simulator data.
 
 ## Publishing a release
 

@@ -125,7 +125,8 @@ class SectorView extends WatchUi.WatchFace {
         var fahrenheit = _units == 1 || (_units != 2 && System.getDeviceSettings().temperatureUnits == System.UNIT_STATUTE);
         colorScale(dc, temp[0], temp[1], SectorMath.temperatureProgress(_data.temperature, _data.lowTemperature, _data.highTemperature), _data.lowTemperature, _data.highTemperature, false);
         label(dc, temp[0], temp[1] - 3, _valueFont, SectorMath.numberText(SectorMath.temperature(_data.temperature, fahrenheit)), WHITE);
-        label(dc, temp[0], temp[1] + 28, _smallFont, fahrenheit ? "°F" : "°C", WHITE);
+        var unitLabel = fahrenheit ? "°F" : "°C";
+        label(dc, temp[0], temp[1] + 28, _smallFont, unitLabel, WHITE);
         // Low/high remain outside the gauge with a clear gap below the unit.
         label(dc, temp[0] - 23, temp[1] + 50, _smallFont, SectorMath.numberText(SectorMath.temperature(_data.lowTemperature, fahrenheit)), WHITE);
         label(dc, temp[0] + 23, temp[1] + 50, _smallFont, SectorMath.numberText(SectorMath.temperature(_data.highTemperature, fahrenheit)), WHITE);

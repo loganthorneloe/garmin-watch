@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
-  <iq:application id="81de4314488a47bca63ebf5087ca942d" type="watchface" name="@Strings.AppName" entry="SectorApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.1.0" version="1.1.6">
+  <iq:application id="81de4314488a47bca63ebf5087ca942d" type="watchface" name="@Strings.AppName" entry="SectorApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.1.0" version="1.1.8">
     <iq:products>
       <iq:product id="fenix9pro51mm"/>
     </iq:products>

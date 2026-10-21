@@ -6,15 +6,15 @@ An open-source analog Garmin watch face: a black AMOLED dial, white hands and ma
 
 The preview uses simulator data, not personal health readings.
 
-**[Download Sector.prg](https://github.com/loganthorneloe/sector-watchface/raw/refs/tags/v1.1.6/install/Sector.prg)** · **[Cable-install guide](docs/INSTALL.md)** · **[Build and fork](docs/DEVELOPMENT.md)**
+**[Download Sector.prg](https://github.com/loganthorneloe/sector-watchface/raw/refs/tags/v1.1.8/install/Sector.prg)** · **[Cable-install guide](docs/INSTALL.md)** · **[Build and fork](docs/DEVELOPMENT.md)**
 
 ## Compatibility
 
-The included v1.1.6 binary targets **fēnix 9 Pro inReach, 51 mm AMOLED**, device ID `fenix9pro51mm`, 466 × 466 pixels. It has been tested in the matching Garmin simulator and transferred to that physical watch. Other sizes and models are **not supported by this binary**, even if their screens look similar. Forks can add and test their own targets.
+The included v1.1.8 binary targets **fēnix 9 Pro inReach, 51 mm AMOLED**, device ID `fenix9pro51mm`, 466 × 466 pixels. It has been tested in the matching Garmin simulator and transferred to that physical watch. Other sizes and models are **not supported by this binary**, even if their screens look similar. Forks can add and test their own targets.
 
 The manifest requires Connect IQ API 5.1.0 or later. Sleep Score requires the native complication introduced in API 6.0.2 and firmware that provides it. Unavailable values show `--`; the face never substitutes a made-up score.
 
-Version 1.1.6 adds larger text and broader, outlined hour/minute hands with short pointed tips. The thin red second hand is unchanged.
+Version 1.1.8 fixes weather disappearing after overnight sleep by displaying Garmin’s latest supplied conditions without an extra age cutoff. The larger text, outlined hands, and thin red second hand are unchanged.
 
 ## On the dial
 
@@ -47,7 +47,7 @@ You do not need the Garmin SDK, a developer account, or a signing key to install
 
 Sector reads steps/goals, Body Battery, Sleep Score, and Garmin’s cached weather on the watch. It does not make network requests, request GPS fixes, collect analytics, or send health data to a server. Weather availability depends on Garmin’s own weather synchronization.
 
-Body Battery uses the native current-value complication, with a fallback to valid history from the last two hours. Weather observations older than two hours are hidden. Metrics refresh at most every 30 seconds during regular awake updates; waking or changing settings can refresh immediately. Drawing follows Garmin’s native watch-face callbacks.
+Body Battery uses the native current-value complication, with a fallback to valid history from the last two hours. Sector displays Garmin's latest supplied weather directly, without a separate age cutoff or retained fallback. Missing data shows `--`. Garmin controls the freshness of its weather cache; Sector does not request weather from an external provider. Metrics refresh at most every 30 seconds during regular awake updates; waking or changing settings can refresh immediately. Drawing follows Garmin’s native watch-face callbacks.
 
 The only requested permissions are `SensorHistory` and `ComplicationSubscriber`. This repository includes source, original face assets, a simulator preview, tests, documentation, and the signed release program. It does **not** include private signing keys, Garmin account files, device backups, device identifiers, SDK files, or personal health records. A program signature is public verification data, not the private signing key.
 
@@ -57,7 +57,7 @@ Fork the repo, follow [DEVELOPMENT.md](docs/DEVELOPMENT.md), and build with your
 
 ## Validation
 
-Version 1.1.6 compiles with Connect IQ SDK 9.2.0. All six simulator tests pass, covering step progress, temperature conversion and range, formatting, Body Battery fallback validity, and color interpolation. The release has been visually checked in the 466 × 466 target simulator and USB transfer was verified by reading the file back. Wider model support and long-term battery consumption have not been established.
+Version 1.1.8 compiles with Connect IQ SDK 9.2.0. All ten simulator tests pass, covering step progress, temperature conversion and range, formatting, Body Battery fallback validity, color interpolation, overnight weather, unavailable/partial weather, and updated provider readings. The unchanged dial layout was visually checked in the 466 × 466 target simulator; the v1.1.8 USB transfer was verified by reading the file back. Wider model support and long-term battery consumption have not been established.
 
 ## License
 
