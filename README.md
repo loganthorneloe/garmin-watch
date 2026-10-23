@@ -7,7 +7,7 @@ Two open-source Garmin watch faces: **Sector** and **Ember**. Each has its own s
 | <img src="faces/sector/docs/preview.png" alt="Sector analog watch face" width="320"> | <img src="faces/ember/docs/preview.png" alt="Ember analog and digital watch face" width="320"> |
 | Analog dial with steps, Sleep Score, Body Battery, UV, date, and temperature. | Analog/digital dial with weather, UV, Body Battery, steps, and right-side hour numerals. |
 | [About Sector](faces/sector/) · **[Download Sector.prg](https://github.com/loganthorneloe/garmin-watch/raw/refs/heads/main/faces/sector/install/Sector.prg)** | [About Ember](faces/ember/) · **[Download Ember.prg](https://github.com/loganthorneloe/garmin-watch/raw/refs/heads/main/faces/ember/install/Ember.prg)** |
-| Version 1.1.8 | Version 1.1.4 |
+| Version 1.1.8 | Version 1.1.5 |
 
 Previews use synthetic simulator readings, not personal health data.
 

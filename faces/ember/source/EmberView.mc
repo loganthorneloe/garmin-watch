@@ -96,7 +96,8 @@ class EmberView extends WatchUi.WatchFace {
     function drawDial(dc) {
         // Fine neutral chapter ring, inside the physical watch bezel.
         for (var i = 0; i < 120; i++) {
-            if (i % 40 <= 2 || i % 40 >= 38) { continue; }
+            // Retain the lower dial gaps; keep the ticks continuous across twelve.
+            if ((i >= 38 && i <= 42) || (i >= 78 && i <= 82)) { continue; }
             var p = point(227,227,i % 10 == 0 ? 214 : 218,i*3);
             var q = point(227,227,223,i*3);
             line(dc,p[0],p[1],q[0],q[1],i % 10 == 0 ? 1.6 : 0.8,0x77777d);
