@@ -19,6 +19,7 @@ class EmberView extends WatchUi.WatchFace {
     var _timeFont;
     var _valueFont;
     var _stepsFont;
+    var _hourFont;
     const WHITE = 0xffffff;
     const DIM_WHITE = 0x777777;
     const TRACK = 0x282828;
@@ -44,6 +45,7 @@ class EmberView extends WatchUi.WatchFace {
         _timeFont = font(61, Graphics.FONT_NUMBER_MEDIUM);
         _valueFont = font(46, Graphics.FONT_MEDIUM);
         _stepsFont = font(26, Graphics.FONT_XTINY);
+        _hourFont = font(32, Graphics.FONT_SMALL);
         _dirty = true;
     }
     function invalidate() { _dirty = true; WatchUi.requestUpdate(); }
@@ -99,45 +101,35 @@ class EmberView extends WatchUi.WatchFace {
             var q = point(227,227,223,i*3);
             line(dc,p[0],p[1],q[0],q[1],i % 10 == 0 ? 1.6 : 0.8,0x77777d);
         }
-        drawDailyProgress(dc,EmberMath.progress(_data.steps,_data.stepGoal),false);
-        drawDailyProgress(dc,EmberMath.progress(_data.floors,_data.floorGoal),true);
-        dailyReadout(dc,112,132,EmberMath.stepsText(_data.steps),false);
-        dailyReadout(dc,342,322,EmberMath.numberText(_data.floors),true);
+        drawDailyProgress(dc,EmberMath.progress(_data.steps,_data.stepGoal));
+        dailyReadout(dc,112,132,EmberMath.stepsText(_data.steps));
+        // Standard hour positions replace the right-side floors display.
+        for (var hour = 1; hour <= 5; hour++) {
+            var position = point(227,227,196,hour * 30);
+            label(dc,position[0],position[1],_hourFont,hour.toString(),WHITE);
+        }
     }
-    function drawDailyProgress(dc, progress, right) {
-        // Steps fill downward from twelve; floors fill upward from six.
+    function drawDailyProgress(dc, progress) {
+        // Steps fill downward from twelve toward six.
         for (var segment = 0; segment < 6; segment++) {
             var start = 2 + segment * 30;
             var end = start + 26;
-            ring(dc,227,227,196,(right ? 180 : 360) - end,26,12,TRACK);
+            ring(dc,227,227,196,360 - end,26,12,TRACK);
             if (progress != null) {
                 var filledEnd = 180 * EmberMath.clamp(progress,0.0,1.0);
                 if (filledEnd > end) { filledEnd = end; }
                 if (filledEnd > start) {
-                    ring(dc,227,227,196,(right ? 180 : 360) - filledEnd,filledEnd - start,12,WHITE);
+                    ring(dc,227,227,196,360 - filledEnd,filledEnd - start,12,WHITE);
                 }
             }
         }
     }
-    function dailyReadout(dc,cx,cy,text,floors) {
+    function dailyReadout(dc,cx,cy,text) {
         var width = dc.getTextWidthInPixels(text,_stepsFont) / _scale;
-        var iconX = cx - (width + 8) / 2;
         label(dc,cx + 13,cy,_stepsFont,text,WHITE);
-        if (floors) { floorsIcon(dc,iconX,cy); }
-        else {
-            // Anchor the footprint's visible right edge five units before the text.
-            var stepsX = cx + 13 - width / 2 - 5 - 7.7;
-            stepsIcon(dc,stepsX,cy - 1.25);
-        }
-    }
-    function floorsIcon(dc,cx,cy) {
-        // Three clear stair treads, with the same visual size as the footprints.
-        line(dc,cx-9,cy+8,cx-9,cy+2,2,WHITE);
-        line(dc,cx-9,cy+2,cx-3,cy+2,2,WHITE);
-        line(dc,cx-3,cy+2,cx-3,cy-4,2,WHITE);
-        line(dc,cx-3,cy-4,cx+3,cy-4,2,WHITE);
-        line(dc,cx+3,cy-4,cx+3,cy-10,2,WHITE);
-        line(dc,cx+3,cy-10,cx+9,cy-10,2,WHITE);
+        // Anchor the footprint's visible right edge five units before the text.
+        var stepsX = cx + 13 - width / 2 - 5 - 7.7;
+        stepsIcon(dc,stepsX,cy - 1.25);
     }
     function stepsIcon(dc, cx, cy) {
         // Upright footprints beside the horizontal step count.

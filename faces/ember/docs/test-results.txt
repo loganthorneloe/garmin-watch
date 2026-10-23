@@ -23,7 +23,7 @@ PASS
 Executing test testBodyBatteryArcGeometry...
 PASS
 ------------------------------------------------------------------------------
-Executing test testDailyArcsOppositeStartsAndFill...
+Executing test testStepsArcStartAndFill...
 PASS
 ------------------------------------------------------------------------------
 Executing test testStepGoalBoundaries...
@@ -49,7 +49,7 @@ testWeatherMissingAndPartialValues         PASS
 testWeatherUsesLatestSuppliedValues        PASS
 testFloorsDailyGoalAndReset                PASS
 testBodyBatteryArcGeometry                 PASS
-testDailyArcsOppositeStartsAndFill         PASS
+testStepsArcStartAndFill                   PASS
 testStepGoalBoundaries                     PASS
 testTemperatureUnitsAndRange               PASS
 testReadoutFormatting                      PASS

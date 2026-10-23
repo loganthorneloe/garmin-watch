@@ -35,27 +35,19 @@ function testBodyBatteryArcGeometry(logger) {
 }
 
 (:test)
-function testDailyArcsOppositeStartsAndFill(logger) {
+function testStepsArcStartAndFill(logger) {
     var left = new GaugeRecordingView();
-    var right = new GaugeRecordingView();
     var cases = [null,0.0,0.5,0.7,1.0,1.5];
     var expectedFill = [0.0,0.0,78.0,108.0,156.0,156.0];
     for (var c = 0; c < cases.size(); c++) {
-        left.arcs = []; right.arcs = [];
-        left.drawDailyProgress(null,cases[c],false);
-        right.drawDailyProgress(null,cases[c],true);
-        Test.assertEqual(left.arcs.size(),right.arcs.size());
+        left.arcs = [];
+        left.drawDailyProgress(null,cases[c]);
         Test.assertEqual(left.arcs[0][0],332);
-        Test.assertEqual(right.arcs[0][0],152);
         var fill = 0.0;
         var tracks = 0;
         for (var i = 0; i < left.arcs.size(); i++) {
-            var l = left.arcs[i]; var r = right.arcs[i];
-            var offset = l[0] - r[0];
-            Test.assert(offset > 179.99 && offset < 180.01);
-            Test.assertEqual(l[1],r[1]);
-            Test.assertEqual(l[2],r[2]);
-            if (r[2] == 0xffffff) { fill += r[1]; }
+            var arc = left.arcs[i];
+            if (arc[2] == 0xffffff) { fill += arc[1]; }
             else { tracks++; }
         }
         Test.assertEqual(tracks,6);
