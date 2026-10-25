@@ -94,8 +94,8 @@ class EmberView extends WatchUi.WatchFace {
         label(dc, mx, 108, _timeFont, mm, Graphics.COLOR_BLACK);
     }
     function drawDial(dc) {
-        // Outer ticks only on the right, from twelve through six.
-        for (var i = 0; i <= 60; i++) {
+        // Right-side ticks exclude the step gauge endpoints at twelve and six.
+        for (var i = 1; i < 60; i++) {
             // Major ticks span the same radial band as the step bar.
             var p = point(227,227,i % 10 == 0 ? 210 : 218,i*3);
             var q = point(227,227,222,i*3);
