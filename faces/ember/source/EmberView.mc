@@ -96,9 +96,17 @@ class EmberView extends WatchUi.WatchFace {
     function drawDial(dc) {
         // Outer ticks only on the right, from twelve through six.
         for (var i = 0; i <= 60; i++) {
-            var p = point(227,227,i % 10 == 0 ? 214 : 218,i*3);
-            var q = point(227,227,223,i*3);
-            line(dc,p[0],p[1],q[0],q[1],i % 10 == 0 ? 1.6 : 0.8,0x77777d);
+            if (i % 10 == 0) {
+                // Match the step arc's radius, thickness, and flat ends.
+                polygon(dc,[point(227,227,210,i*3 - 1.5),
+                            point(227,227,222,i*3 - 1.5),
+                            point(227,227,222,i*3 + 1.5),
+                            point(227,227,210,i*3 + 1.5)],0x77777d);
+            } else {
+                var p = point(227,227,218,i*3);
+                var q = point(227,227,223,i*3);
+                line(dc,p[0],p[1],q[0],q[1],0.8,0x77777d);
+            }
         }
         drawDailyProgress(dc,EmberMath.progress(_data.steps,_data.stepGoal));
         dailyReadout(dc,112,132,EmberMath.stepsText(_data.steps));
