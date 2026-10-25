@@ -94,8 +94,8 @@ class EmberView extends WatchUi.WatchFace {
         label(dc, mx, 108, _timeFont, mm, Graphics.COLOR_BLACK);
     }
     function drawDial(dc) {
-        // Fine neutral chapter ring, inside the physical watch bezel.
-        for (var i = 0; i < 120; i++) {
+        // Outer ticks only on the right, from twelve through six.
+        for (var i = 0; i <= 60; i++) {
             var p = point(227,227,i % 10 == 0 ? 214 : 218,i*3);
             var q = point(227,227,223,i*3);
             line(dc,p[0],p[1],q[0],q[1],i % 10 == 0 ? 1.6 : 0.8,0x77777d);
@@ -113,12 +113,12 @@ class EmberView extends WatchUi.WatchFace {
         for (var segment = 0; segment < 6; segment++) {
             var start = 2 + segment * 30;
             var end = start + 26;
-            ring(dc,227,227,196,360 - end,26,12,TRACK);
+            ring(dc,227,227,216,360 - end,26,12,TRACK);
             if (progress != null) {
                 var filledEnd = 180 * EmberMath.clamp(progress,0.0,1.0);
                 if (filledEnd > end) { filledEnd = end; }
                 if (filledEnd > start) {
-                    ring(dc,227,227,196,360 - filledEnd,filledEnd - start,12,WHITE);
+                    ring(dc,227,227,216,360 - filledEnd,filledEnd - start,12,WHITE);
                 }
             }
         }
