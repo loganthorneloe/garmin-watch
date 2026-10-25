@@ -38,17 +38,21 @@ function testBodyBatteryArcGeometry(logger) {
 function testStepsArcStartAndFill(logger) {
     var left = new GaugeRecordingView();
     var cases = [null,0.0,0.5,0.7,1.0,1.5];
-    var expectedFill = [0.0,0.0,78.0,108.0,156.0,156.0];
+    var expectedFill = [0.0,0.0,75.0,102.0,150.0,150.0];
     for (var c = 0; c < cases.size(); c++) {
         left.arcs = [];
         left.drawDailyProgress(null,cases[c]);
-        Test.assertEqual(left.arcs[0][0],332);
+        Test.assertEqual(left.arcs[0][0],335);
         var fill = 0.0;
         var tracks = 0;
         for (var i = 0; i < left.arcs.size(); i++) {
             var arc = left.arcs[i];
             if (arc[2] == 0xffffff) { fill += arc[1]; }
-            else { tracks++; }
+            else {
+                Test.assertEqual(arc[0],335 - tracks * 31);
+                Test.assertEqual(arc[1],25);
+                tracks++;
+            }
         }
         Test.assertEqual(tracks,6);
         Test.assert(fill > expectedFill[c] - 0.01 && fill < expectedFill[c] + 0.01);

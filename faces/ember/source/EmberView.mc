@@ -105,16 +105,16 @@ class EmberView extends WatchUi.WatchFace {
         dailyReadout(dc,112,132,EmberMath.stepsText(_data.steps));
         // Standard hour positions replace the right-side floors display.
         for (var hour = 1; hour <= 5; hour++) {
-            var position = point(227,227,196,hour * 30);
+            var position = point(227,227,184,hour * 30);
             label(dc,position[0],position[1],_hourFont,hour.toString(),WHITE);
         }
     }
     function drawDailyProgress(dc, progress) {
-        // Steps fill downward from twelve toward six.
+        // Six equal 25-degree segments and five 6-degree gaps span twelve to six.
         for (var segment = 0; segment < 6; segment++) {
-            var start = 2 + segment * 30;
-            var end = start + 26;
-            ring(dc,227,227,216,360 - end,26,12,TRACK);
+            var start = segment * 31;
+            var end = start + 25;
+            ring(dc,227,227,216,360 - end,25,12,TRACK);
             if (progress != null) {
                 var filledEnd = 180 * EmberMath.clamp(progress,0.0,1.0);
                 if (filledEnd > end) { filledEnd = end; }
